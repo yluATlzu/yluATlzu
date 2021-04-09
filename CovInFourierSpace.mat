@@ -1,0 +1,17 @@
+
+%I is 180x180
+orgFm=fft2(I, 249, 249);
+
+h = fspecial('gaussian', 70, 10); 
+
+hFM=fft2(h, 249,249);
+
+newIm=real(ifft2(orgFm.*hFM));
+
+%figure;imagesc(abs(hFM));
+
+figure;imagesc(newIm);
+
+jjim = imfilter(I, h);
+
+figure;imagesc(jjim);
